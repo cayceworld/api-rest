@@ -21,26 +21,24 @@ router.route('/testimonials/:id').get((req, res) => {
 router.route('/testimonials').post((req, res) => {
   const { author, text } = req.body;
 
-  res.send({ message: 'ok' });
   db.testimonials.push({ author: author, text: text, id: uuidv4() });
   console.log(db.testimonials);
+  res.send({ message: 'ok' });
 })
 
 router.route('/testimonials/:id').put((req, res) => {
-  const { author, text } = req.body;
 
-  res.send({ message: 'ok' });
-  db.testimonials.map(testimonial => (testimonial.id == req.params.id ? { ...testimonial, ...req.body } : testimonial))
+  db.testimonials = db.testimonials.map(testimonial => (testimonial.id == req.params.id ? { ...testimonial, ...req.body } : testimonial))
   console.log(db.testimonials);
+  res.send({ message: 'ok' });
 })
 
 router.route('/testimonials/:id').delete((req, res) => {
-  const { author, text } = req.body;
 
-  res.json({ message: 'ok' });
-  db.testimonials.filter(testimonial => (testimonial.id !== req.params.id))
+  db.testimonials = db.testimonials.filter(testimonial => (testimonial.id != req.params.id))
   console.log(db.testimonials);
-}) 
+  res.json({ message: 'ok' });
+})
 
 
 module.exports = router;
