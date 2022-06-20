@@ -12,6 +12,6 @@
     "uuid": "^8.3.2"
   }, 
   "scripts": {
-    "build": "cd client && yarn install && yarn build"
+    "build": "cd client/NewWaveFest && yarn install && yarn build"
   }
 }
